@@ -8,6 +8,7 @@ export class CreateUserService {
 
   async exec(createUserDto: CreateUserDto) {
     console.log('create User');
-    return this.userRepository.createUser(createUserDto);
+    await this.userRepository.createUserIntoMongo(createUserDto);
+    await this.userRepository.createUserIntoPSQL(createUserDto);
   }
 }
